@@ -22,8 +22,8 @@ namespace Game2048
         }
         public bool quitGame = false;
         // no merge or move no random block
-        private bool hasBlocksMerged;
-        private bool hasBlocksMoved;
+        private bool hasBlocksMerged=false;
+        private bool hasBlocksMoved=false;
 
         public Game(GameRenderer gameRenderer, GameController gameController)
         {
@@ -70,13 +70,10 @@ namespace Game2048
                     return;
             }
             // add random block
-            if (hasBlocksMerged)
+            if (hasBlocksMerged || hasBlocksMoved)
             {
                 RandomBlock();
                 hasBlocksMerged = false;
-            }
-            else if (hasBlocksMoved) {
-                RandomBlock();
                 hasBlocksMoved = false;
             }
             // check end game
